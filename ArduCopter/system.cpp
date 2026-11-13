@@ -111,6 +111,12 @@ void Copter::init_ardupilot()
 #if HAL_MOUNT_ENABLED
     // initialise camera mount
     camera_mount.init();
+#if HAL_MOUNT_SERVO_ENABLED && defined(MICOAIR405V2_CAMERA_LEVEL_ON_BOOT) && MICOAIR405V2_CAMERA_LEVEL_ON_BOOT
+    // Start this board's servo camera level, with yaw following the aircraft.
+    if (camera_mount.get_mount_type() == AP_Mount::Type::Servo) {
+        camera_mount.set_angle_target(0.0f, 0.0f, 0.0f, false);
+    }
+#endif
 #endif
 
 #if AP_CAMERA_ENABLED

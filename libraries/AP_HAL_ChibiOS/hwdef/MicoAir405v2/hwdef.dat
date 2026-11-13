@@ -154,3 +154,10 @@ undef AP_OPTICALFLOW_ENABLED
 
 # Feature selection from official custom build 590adad7.
 include custom-590adad7.inc
+
+# PWM servo camera pitch stabilization for this local board build.
+undef HAL_MOUNT_ENABLED
+define HAL_MOUNT_ENABLED 1
+undef HAL_MOUNT_SERVO_ENABLED
+define HAL_MOUNT_SERVO_ENABLED 1
+define MICOAIR405V2_CAMERA_LEVEL_ON_BOOT 1
